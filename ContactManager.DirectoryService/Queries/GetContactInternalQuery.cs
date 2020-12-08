@@ -7,6 +7,6 @@ namespace ContactManager.DirectoryService.Queries
 {
 	public class GetContactInternalQuery : IRequest<ContactDto>, IHasId
 	{
-		public Guid Id { get; set; }
+		public string Id { get; set; }
 	}
 }

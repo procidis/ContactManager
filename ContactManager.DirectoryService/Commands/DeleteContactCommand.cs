@@ -7,6 +7,6 @@ namespace ContactManager.DirectoryService.Commands
 {
 	public class DeleteContactCommand : IRequest, IHasId
 	{
-		public Guid Id { get; set; }
+		public string Id { get; set; }
 	}
 }

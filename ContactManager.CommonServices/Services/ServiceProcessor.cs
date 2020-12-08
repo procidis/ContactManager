@@ -60,7 +60,7 @@ namespace ContactManager.CommonServices.Services
 			return CreateResponse(result, exception, errorCode);
 		}
 
-		private ServiceResponse<TResponse> CreateResponse<TResponse>(TResponse result, Exception ex, string language, string errorCode = null)
+		private ServiceResponse<TResponse> CreateResponse<TResponse>(TResponse result, Exception ex, string errorCode = null)
 		{
 			var response = new ServiceResponse<TResponse>()
 			{
@@ -72,7 +72,7 @@ namespace ContactManager.CommonServices.Services
 			if (ex != null)
 			{
 				response.Succeeded = false;
-				response.ErrorCode = errorCode?? UNHANDLED_EXCEPTION_CODE;
+				response.ErrorCode = errorCode ?? UNHANDLED_EXCEPTION_CODE;
 			}
 			else
 			{

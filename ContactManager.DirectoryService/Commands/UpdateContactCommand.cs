@@ -8,6 +8,6 @@ namespace ContactManager.DirectoryService.Commands
 	public class UpdateContactCommand : IRequest, IHasData<ContactDto>, IHasId
 	{
 		public ContactDto Data { get; set; }
-		public Guid Id { get; set; }
+		public string Id { get; set; }
 	}
 }

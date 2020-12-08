@@ -33,7 +33,7 @@ namespace ContactManager.CommonServices.Implementations
 
 		// GET api/<[TData]Controller>/blablabla
 		[HttpGet("{id}")]
-		public async Task<ServiceResponse<TData>> Get(Guid id)
+		public async Task<ServiceResponse<TData>> Get(string id)
 		{
 			var query = Activator.CreateInstance<TGetOneQuery>();
 			query.Id = id;
@@ -49,7 +49,7 @@ namespace ContactManager.CommonServices.Implementations
 
 		// PUT api/<[TData]Controller>/blablabla
 		[HttpPut("{id}")]
-		public async Task Put(Guid id, [FromBody] TUpdateCommand command)
+		public async Task Put(string id, [FromBody] TUpdateCommand command)
 		{
 			command.Id = id;
 			await serviceProcessor.HandleVoidAsync(command);
@@ -57,7 +57,7 @@ namespace ContactManager.CommonServices.Implementations
 
 		// DELETE api/<[TData]Controller>/blablabla
 		[HttpDelete("{id}")]
-		public async Task Delete(Guid id)
+		public async Task Delete(string id)
 		{
 			var command = Activator.CreateInstance<TDeleteCommand>();
 			command.Id = id;

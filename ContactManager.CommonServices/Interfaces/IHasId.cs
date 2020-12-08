@@ -6,6 +6,6 @@ namespace ContactManager.CommonServices.Interfaces
 {
 	public interface IHasId
 	{
-		Guid Id { get; set; }
+		string Id { get; set; }
 	}
 }
