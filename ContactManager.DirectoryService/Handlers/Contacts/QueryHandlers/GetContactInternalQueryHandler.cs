@@ -1,14 +1,13 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using ContactManager.DirectoryService.Models.DB;
-using ContactManager.DirectoryService.Queries;
+using ContactManager.DirectoryService.Queries.Contacts;
 using ContactManager.ModelLayer;
 using ContactManager.Persistence.Interfaces;
 using MediatR;
 
-namespace ContactManager.DirectoryService.Handlers.QueryHandlers
+namespace ContactManager.DirectoryService.Handlers.Contacts.QueryHandlers
 {
 	internal class GetContactInternalQueryHandler : IRequestHandler<GetContactInternalQuery, ContactDto>
 	{

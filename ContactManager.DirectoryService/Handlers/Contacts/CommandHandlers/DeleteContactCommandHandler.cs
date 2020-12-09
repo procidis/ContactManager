@@ -1,12 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using ContactManager.DirectoryService.Commands;
+using ContactManager.DirectoryService.Commands.Contacts;
 using ContactManager.DirectoryService.Models.DB;
 using ContactManager.Persistence.Interfaces;
 using MediatR;
 
-namespace ContactManager.DirectoryService.Handlers.CommandHandlers
+namespace ContactManager.DirectoryService.Handlers.Contacts.CommandHandlers
 {
 	internal class DeleteContactCommandHandler : IRequestHandler<DeleteContactCommand>
 	{

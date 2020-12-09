@@ -25,7 +25,7 @@ namespace ContactManager.CommonServices.Implementations
 
 		// GET: api/<[TData]Controller>
 		[HttpGet]
-		public async Task<ServiceResponse<IEnumerable<TData>>> Get()
+		public virtual async Task<ServiceResponse<IEnumerable<TData>>> Get()
 		{
 			var query = Activator.CreateInstance<TGetAllQuery>();
 			return await serviceProcessor.HandleAsync(query);
@@ -33,7 +33,7 @@ namespace ContactManager.CommonServices.Implementations
 
 		// GET api/<[TData]Controller>/blablabla
 		[HttpGet("{id}")]
-		public async Task<ServiceResponse<TData>> Get(string id)
+		public virtual async Task<ServiceResponse<TData>> Get(string id)
 		{
 			var query = Activator.CreateInstance<TGetOneQuery>();
 			query.Id = id;
@@ -42,14 +42,14 @@ namespace ContactManager.CommonServices.Implementations
 
 		// POST api/<[TData]Controller>
 		[HttpPost]
-		public async Task<ServiceResponse<TData>> Post([FromBody] TCreateCommand command)
+		public virtual async Task<ServiceResponse<TData>> Post([FromBody] TCreateCommand command)
 		{
 			return await serviceProcessor.HandleAsync(command);
 		}
 
 		// PUT api/<[TData]Controller>/blablabla
 		[HttpPut("{id}")]
-		public async Task Put(string id, [FromBody] TUpdateCommand command)
+		public virtual async Task Put(string id, [FromBody] TUpdateCommand command)
 		{
 			command.Id = id;
 			await serviceProcessor.HandleVoidAsync(command);
@@ -57,7 +57,7 @@ namespace ContactManager.CommonServices.Implementations
 
 		// DELETE api/<[TData]Controller>/blablabla
 		[HttpDelete("{id}")]
-		public async Task Delete(string id)
+		public virtual async Task Delete(string id)
 		{
 			var command = Activator.CreateInstance<TDeleteCommand>();
 			command.Id = id;

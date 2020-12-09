@@ -2,7 +2,7 @@
 using ContactManager.ModelLayer;
 using MediatR;
 
-namespace ContactManager.DirectoryService.Commands
+namespace ContactManager.DirectoryService.Commands.Contacts
 {
 	public class CreateContactCommand : IRequest<ContactDto>, IHasData<ContactDto>
 	{

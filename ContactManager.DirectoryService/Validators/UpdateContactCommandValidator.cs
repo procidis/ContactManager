@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ContactManager.DirectoryService.Commands;
+﻿using ContactManager.DirectoryService.Commands.Contacts;
 using FluentValidation;
 
 namespace ContactManager.DirectoryService.Validators

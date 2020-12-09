@@ -1,4 +1,4 @@
-﻿using ContactManager.DirectoryService.Commands;
+﻿using ContactManager.DirectoryService.Commands.Contacts;
 using FluentValidation;
 
 namespace ContactManager.DirectoryService.Validators

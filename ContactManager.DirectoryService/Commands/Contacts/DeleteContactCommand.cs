@@ -3,9 +3,9 @@ using ContactManager.CommonServices.Interfaces;
 using ContactManager.ModelLayer;
 using MediatR;
 
-namespace ContactManager.DirectoryService.Queries
+namespace ContactManager.DirectoryService.Commands.Contacts
 {
-	public class GetContactInternalQuery : IRequest<ContactDto>, IHasId
+	public class DeleteContactCommand : IRequest, IHasId
 	{
 		public string Id { get; set; }
 	}
