@@ -33,15 +33,19 @@ namespace ContactManager.DirectoryService
 			}).AddNewtonsoftJson(options => options.UseMemberCasing());
 
 			services.AddSwaggerGen();
-			services.AddScoped<IServiceProcessor, ServiceProcessor>();
-			services.AddScoped<ITicketService, TicketService>();
+
 			var assembly = Assembly.GetEntryAssembly();
 			services.AddValidatorsFromAssembly(assembly);
 			services.AddMediatR(assembly);
 			services.AddAutoMapper(assembly);
-			services.AddSingleton<RequestExceptionFilter>();
+
 			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 			services.AddGenericDb(Configuration);
+
+			services.AddScoped<RequestExceptionFilter>();
+			services.AddScoped<IServiceProcessor, ServiceProcessor>();
+			services.AddScoped<ITicketService, TicketService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

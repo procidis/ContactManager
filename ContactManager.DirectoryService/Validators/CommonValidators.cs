@@ -5,8 +5,8 @@ namespace ContactManager.DirectoryService.Validators
 {
 	public static class CommonValidators
 	{
-		private const string NON_EPTY_OBJECT_ID_MESSAGE = "Field must bu non-empty object id";
-		private const string EPTY_OBJECT_ID_MESSAGE = "Field must bu empty object id";
+		private const string NON_EPTY_OBJECT_ID_MESSAGE = "Field must be non-empty object id";
+		private const string EPTY_OBJECT_ID_MESSAGE = "Field must be empty object id";
 		public static IRuleBuilderOptions<T, string> MustBeNonEmptyObjectId<T>(this IRuleBuilder<T, string> ruleBuilder)
 		{
 			return ruleBuilder
@@ -20,7 +20,7 @@ namespace ContactManager.DirectoryService.Validators
 		{
 			return ruleBuilder
 				.Empty()
-				.Must(w => ObjectId.TryParse(w, out var objectId) && objectId == ObjectId.Empty)
+				.Must(w => !ObjectId.TryParse(w, out var objectId) || objectId == ObjectId.Empty)
 				.WithMessage(EPTY_OBJECT_ID_MESSAGE);
 		}
 	}

@@ -22,8 +22,7 @@ namespace ContactManager.DirectoryService.Validators
 				.NotNull()
 				.NotEmpty();
 			RuleFor(w => w.Data.UUID)
-				.NotNull()
-				.NotEmpty();
+				.MustBeEmptyObjectId();
 		}
 	}
 }
