@@ -7,6 +7,6 @@ namespace ContactManager.DirectoryService.Queries.ContactSections
 {
 	public class GetContactSectionsByUserInternalQuery : IRequest<IEnumerable<ContactSectionDto>>
 	{
-		public string UserId { get; set; }
+		public string ContactId { get; set; }
 	}
 }

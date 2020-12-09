@@ -1,7 +1,7 @@
 ﻿using ContactManager.DirectoryService.Commands.Contacts;
 using FluentValidation;
 
-namespace ContactManager.DirectoryService.Validators
+namespace ContactManager.DirectoryService.Validators.Contacts
 {
 	public class CreateContactCommandValidator : AbstractValidator<CreateContactCommand>
 	{
@@ -13,9 +13,6 @@ namespace ContactManager.DirectoryService.Validators
 				.NotNull()
 				.NotEmpty();
 			RuleFor(w => w.Data.Name)
-				.NotNull()
-				.NotEmpty();
-			RuleFor(w => w.Data.Sections)
 				.NotNull()
 				.NotEmpty();
 			RuleFor(w => w.Data.Surname)

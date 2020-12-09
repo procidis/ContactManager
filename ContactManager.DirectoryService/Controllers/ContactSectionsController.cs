@@ -26,7 +26,7 @@ namespace ContactManager.DirectoryService.Controllers
 		{
 			var query = new GetContactSectionsByUserInternalQuery
 			{
-				UserId = userId
+				ContactId = userId
 			};
 			return await serviceProcessor.HandleAsync(query);
 		}
