@@ -1,16 +1,25 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using ContactManager.DirectoryService.Commands;
+using ContactManager.DirectoryService.Models.DB;
+using ContactManager.Persistence.Interfaces;
 using MediatR;
 
 namespace ContactManager.DirectoryService.Handlers.CommandHandlers
 {
-	public class DeleteContactCommandHandler : IRequestHandler<DeleteContactCommand>
+	internal class DeleteContactCommandHandler : IRequestHandler<DeleteContactCommand>
 	{
-		public Task<Unit> Handle(DeleteContactCommand request, CancellationToken cancellationToken)
+		private readonly IGenericRepository<Contact> contactRepository;
+
+		public DeleteContactCommandHandler(IGenericRepository<Contact> contactRepository)
 		{
-			throw new NotImplementedException();
+			this.contactRepository = contactRepository;
+		}
+		public async Task<Unit> Handle(DeleteContactCommand request, CancellationToken cancellationToken)
+		{
+			await contactRepository.RemoveAsync(request.Id);
+			return Unit.Value;
 		}
 	}
 }
