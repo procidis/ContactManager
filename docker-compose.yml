@@ -1,7 +1,24 @@
-version: "3"
+version: '3.4'
 services:
-  mongo-database:
-    container_name: directory_db
-    image: mongo:4
-    ports:
-      - 27017:27017
+    directory_db:
+        image: mongo
+        container_name: directory_db
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: r00tUs3rPassw0rd
+          MONGO_INITDB_DATABASE: auth
+        ports:
+          - 27017:27017
+
+    directory_service:
+        image: directory_service_image
+        container_name: directory_service
+        build:
+            context: ./
+            dockerfile: ./ContactManager.DirectoryService/Dockerfile
+        ports:
+          - 5000:80
+        environment:
+          MongoDB__Host: directory_db
+        depends_on:
+          - directory_db
