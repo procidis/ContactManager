@@ -12,9 +12,12 @@ namespace ContactManager.DirectoryService.Settings
 	{
 		public MappingProfile()
 		{
-			CreateMap<Contact, ContactDto>();
-			CreateMap<ContactDto, Contact>();
+			CreateMap<Contact, ContactDto>()
+				.ForMember(w => w.UUID, q => q.MapFrom(s => s.Id));
+			CreateMap<ContactDto, Contact>()
+				.ForMember(w => w.Id, q => q.MapFrom(s => s.UUID));
 			CreateMap<ContactSectionDto, ContactSection>();
+			CreateMap<ContactSection, ContactSectionDto>();
 		}
 	}
 }

@@ -16,13 +16,13 @@ namespace ContactManager.Persistence.Implementations
 		private readonly IMongoCollection<TData> collection;
 		public GenericRepository(IOptions<DBSettings> options)
 		{
-			if (string.IsNullOrWhiteSpace(options.Value?.ConnectionString) || string.IsNullOrWhiteSpace(options.Value?.DBName))
+			if (string.IsNullOrWhiteSpace(options.Value?.ConnectionString))
 			{
 				throw new ArgumentNullException(nameof(DBSettings));
 			}
 
 			var client = new MongoClient(options.Value.ConnectionString);
-			var database = client.GetDatabase(options.Value.DBName);
+			var database = client.GetDatabase(options.Value.Database);
 			collection = database.GetCollection<TData>(typeof(TData).Name);
 		}
 
