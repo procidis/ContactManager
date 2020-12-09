@@ -21,6 +21,15 @@ namespace ContactManager.DirectoryService
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
+				})
+				.ConfigureAppConfiguration(configuration =>
+				{
+					configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+					var environmentVariable = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+					if (!string.IsNullOrWhiteSpace(environmentVariable))
+					{
+						configuration.AddJsonFile($"appsettings.{environmentVariable}.json", optional: true);
+					}
 				});
 	}
 }

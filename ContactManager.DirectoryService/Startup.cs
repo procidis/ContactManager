@@ -2,6 +2,8 @@ using System.Reflection;
 using AutoMapper;
 using ContactManager.CommonServices.Interfaces;
 using ContactManager.CommonServices.Services;
+using ContactManager.DirectoryService.Filters;
+using ContactManager.DirectoryService.Pipeline;
 using ContactManager.Persistence.Extensions;
 using FluentValidation;
 using MediatR;
@@ -25,7 +27,11 @@ namespace ContactManager.DirectoryService
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
+			services.AddControllers(configure =>
+			{
+				configure.Filters.AddService<RequestExceptionFilter>();
+			}).AddNewtonsoftJson(options => options.UseMemberCasing());
+
 			services.AddSwaggerGen();
 			services.AddScoped<IServiceProcessor, ServiceProcessor>();
 			services.AddScoped<ITicketService, TicketService>();
@@ -33,7 +39,8 @@ namespace ContactManager.DirectoryService
 			services.AddValidatorsFromAssembly(assembly);
 			services.AddMediatR(assembly);
 			services.AddAutoMapper(assembly);
-
+			services.AddSingleton<RequestExceptionFilter>();
+			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 			services.AddGenericDb(Configuration);
 		}
 

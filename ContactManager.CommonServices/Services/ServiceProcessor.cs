@@ -73,12 +73,23 @@ namespace ContactManager.CommonServices.Services
 			{
 				response.Succeeded = false;
 				response.ErrorCode = errorCode ?? UNHANDLED_EXCEPTION_CODE;
+				response.Message = GetExceptionMessage(ex);
 			}
 			else
 			{
 				response.Result = result;
 			}
 			return response;
+		}
+
+		private string GetExceptionMessage(Exception ex, string message = null)
+		{
+			message = $"{ex.Message}\n{message}";
+			if (ex.InnerException == null)
+			{
+				return message;
+			}
+			return GetExceptionMessage(ex.InnerException, message);
 		}
 	}
 }
