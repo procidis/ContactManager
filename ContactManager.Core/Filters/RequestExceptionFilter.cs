@@ -4,7 +4,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace ContactManager.DirectoryService.Filters
+namespace ContactManager.Core.Filters
 {
 	public class RequestExceptionFilter : ExceptionFilterAttribute, IExceptionFilter
 	{

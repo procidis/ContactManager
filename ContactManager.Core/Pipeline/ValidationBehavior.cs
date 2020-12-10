@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
 
-namespace ContactManager.DirectoryService.Pipeline
+namespace ContactManager.Core.Pipeline
 {
 	public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 		where TRequest : IRequest<TResponse>

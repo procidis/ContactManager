@@ -12,6 +12,7 @@ COPY ["ContactManager.DirectoryService/ContactManager.DirectoryService.csproj", 
 COPY ["ContactManager.ModelLayer/ContactManager.ModelLayer.csproj", "ContactManager.ModelLayer/"]
 COPY ["ContactManager.Persistence/ContactManager.Persistence.csproj", "ContactManager.Persistence/"]
 COPY ["ContactManager.CommonServices/ContactManager.CommonServices.csproj", "ContactManager.CommonServices/"]
+COPY ["ContactManager.Core/ContactManager.Core.csproj", "ContactManager.Core/"]
 RUN dotnet restore "ContactManager.DirectoryService/ContactManager.DirectoryService.csproj"
 COPY . .
 WORKDIR "/src/ContactManager.DirectoryService"

@@ -10,6 +10,35 @@ services:
         ports:
           - 27017:27017
 
+    reporting_service_db:
+        image: mongo
+        container_name: reporting_service_db
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: r00tUs3rPassw0rd
+          MONGO_INITDB_DATABASE: auth
+        ports:
+          - 27018:27018
+
+    zookeeper:
+        image: confluentinc/cp-zookeeper:latest
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_TICK_TIME: 2000
+    kafka:
+        image: confluentinc/cp-kafka:latest
+        depends_on:
+            - zookeeper
+        ports:
+            - 9092:9092
+        environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://127.0.0.1:9092
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
     directory_service:
         image: directory_service_image
         container_name: directory_service
@@ -22,3 +51,18 @@ services:
           MongoDB__Host: directory_db
         depends_on:
           - directory_db
+          - kafka
+
+    reporting_service:
+        image: reporting_service
+        container_name: reporting_service
+        build:
+            context: ./
+            dockerfile: ./ContactManager.ReportingService/Dockerfile
+        ports:
+          - 5002:80
+        environment:
+          MongoDB__Host: reporting_service_db
+        depends_on:
+          - reporting_service_db
+          - kafka
