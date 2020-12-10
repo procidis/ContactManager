@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
+using Confluent.Kafka;
 using ContactManager.CommonServices.Interfaces;
 using ContactManager.CommonServices.Services;
 using ContactManager.Core.Filters;
@@ -54,6 +55,8 @@ namespace ContactManager.Core.Implementations
 			services.AddScoped<RequestExceptionFilter>();
 			services.AddScoped<IServiceProcessor, ServiceProcessor>();
 			services.AddScoped<ITicketService, TicketService>();
+
+			services.Configure<ProducerConfig>(Configuration.GetSection(nameof(ProducerConfig)));
 		}
 
 		protected virtual void ConfigureBase(IApplicationBuilder app, IWebHostEnvironment env)

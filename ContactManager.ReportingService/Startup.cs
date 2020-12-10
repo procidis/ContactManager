@@ -1,4 +1,5 @@
 using ContactManager.Core.Implementations;
+using ContactManager.Persistence.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,7 @@ namespace ContactManager.ReportingService
 		public void ConfigureServices(IServiceCollection services)
 		{
 			ConfigureServicesBase(services);
+			services.AddHostedService<KafkaConsumerHostedService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

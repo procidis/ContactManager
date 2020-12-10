@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactManager.CommonServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactManager.Persistence", "ContactManager.Persistence\ContactManager.Persistence.csproj", "{BB3681BD-4743-433E-9FF8-EB965CA64D56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Core", "ContactManager.Core\ContactManager.Core.csproj", "{C125DEE9-66F6-4778-83FD-6AA8C383FB97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactManager.Core", "ContactManager.Core\ContactManager.Core.csproj", "{C125DEE9-66F6-4778-83FD-6AA8C383FB97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
