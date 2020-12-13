@@ -1,7 +1,7 @@
 ﻿using ContactManager.CommonServices.Implementations;
 using ContactManager.CommonServices.Interfaces;
-using ContactManager.DirectoryService.Commands;
-using ContactManager.DirectoryService.Queries;
+using ContactManager.DirectoryService.Commands.Contacts;
+using ContactManager.DirectoryService.Queries.Contacts;
 using ContactManager.ModelLayer;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

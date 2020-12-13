@@ -8,19 +8,26 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Models\" />
-		<Folder Include="Validators\" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\ContactManager.CommonServices\ContactManager.CommonServices.csproj" />
+		<ProjectReference Include="..\ContactManager.Core\ContactManager.Core.csproj" />
 		<ProjectReference Include="..\ContactManager.ModelLayer\ContactManager.ModelLayer.csproj" />
+		<ProjectReference Include="..\ContactManager.Persistence\ContactManager.Persistence.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Content Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="appsettings.Development.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>
